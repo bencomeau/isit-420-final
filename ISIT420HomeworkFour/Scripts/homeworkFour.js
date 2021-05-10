@@ -44,12 +44,15 @@ document.getElementById('getMarkups').addEventListener('click', async ev => {
     const errorEl = document.getElementById('markupsError');
 
     try {
-        const { sum } = await getData(`api/markups`);
+        const { stores } = await getData(`api/markups`);
 
-        if (sum) {
-            sum.forEach(function () {
+        if (stores) {
+            // Clear the previous list items so we don't continue
+            // to get duplicates with each click of the button.
+            successEl.innerHTML = '';
+            stores.forEach(function (store) {
                 const li = document.createElement('li');
-                li.innerHTML = "City: " + sum.city + ", Count: " + sum.total;
+                li.innerHTML = "City: " + store.city + ", Count: " + store.total;
                 successEl.appendChild(li);
             });
             successEl.style.visibility = 'visible';
