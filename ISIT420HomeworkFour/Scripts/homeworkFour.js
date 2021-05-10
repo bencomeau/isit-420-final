@@ -38,6 +38,32 @@ const populateSelect = async (selectId, controllerName) => {
     }
 }
 
+document.getElementById('getMarkups').addEventListener('click', async ev => {
+
+    const successEl = document.getElementById('markupsMessage');
+    const errorEl = document.getElementById('markupsError');
+
+    try {
+        const { sum } = await getData(`api/markups`);
+
+        if (sum) {
+            sum.forEach(function () {
+                const li = document.createElement('li');
+                li.innerHTML = "City: " + sum.city + ", Count: " + sum.total;
+                successEl.appendChild(li);
+            });
+            successEl.style.visibility = 'visible';
+            errorEl.style.visibility = 'hidden';
+        } else {
+            successEl.style.visibility = 'hidden';
+            errorEl.style.visibility = 'visible';
+        }
+    } catch (e) {
+        successEl.style.visibility = 'hidden';
+        errorEl.style.visibility = 'visible';
+    }
+});
+
 document.getElementById('employeePerformance').addEventListener('submit', async ev => {
     ev.preventDefault();
 
