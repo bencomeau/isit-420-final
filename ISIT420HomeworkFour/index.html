@@ -9,21 +9,29 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
     <script src="Scripts/homeworkFour.js" async></script>
     <meta charset="utf-8" />
-    <title>ISIT 420 - Assignment Four</title>
+    <title>Final Project</title>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="column">
-                <h1>Assignment Four - Node Orders 500</h1>
+                <h1>Final Project</h1>
             </div>
         </div>
         <hr />
         <div class="row">
             <div class="column">
-                <h3>Which stores are selling CDs for better markups? (price greater than $13)</h3>
+                <h3>What is the unemployment rate for the last n years?</h3>
                 <p>Here are the total number of sales per store of CD's sold at greater than $13</p>
-                <button type="button" id="getMarkups">Get Markups</button>
+                <select name="year">
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                </select>
+                <!--<button type="button" id="getMarkups">Get Markups</button>-->
                 <ul style="visibility:hidden" id="markupsMessage"></ul>
                 <p style="visibility:hidden" id="markupsError">There was an error. Try again.</p>
             </div>
@@ -31,13 +39,14 @@
         <hr />
         <div class="row">
             <div class="column">
-                <h3>I want to check on the performance of an employee.</h3>
-                <p>Will show the total amount sold for a salesperson for the entire year.</p>
-                <form id="employeePerformance">
-                    <select name="employee" id="employeeSelect" required>
-                        <option value="">Select an employee</option>
+                <h3>I want to check the weak Average Directional Index compared to the strong.</h3>
+                <p>Will show the weak or strong ADI</p>
+                <form id="ADI">
+                    <select name="adi" id="adi" required>
+                        <option value="strong">Strong</option>
+                        <option value="weak">Weak</option>
                     </select>
-                    <button type="submit">Get Employee</button>
+                    <button type="submit">Get ADI</button>
                 </form>
                 <p style="visibility:hidden" id="employeePerformanceMessage">This employee sold $<span id="employeePerformanceAmount"></span> for the year.</p>
                 <p style="visibility:hidden" id="employeeError">There was an error. Try again.</p>
