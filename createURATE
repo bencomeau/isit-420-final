@@ -1,0 +1,31 @@
+USE [Final]
+GO
+
+/****** Object:  Table [dbo].[UnemploymentRates]    Script Date: 6/13/2021 9:54:22 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[UnemploymentRates](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[date_id] [int] NOT NULL,
+	[unemployment_rate] [int] NOT NULL,
+ CONSTRAINT [PK_UnemploymentRates] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [IX_UnemploymentRates_1] UNIQUE NONCLUSTERED 
+(
+	[date_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[UnemploymentRates]  WITH NOCHECK ADD  CONSTRAINT [FK_UnemploymentRates_ReportingDates] FOREIGN KEY([date_id])
+REFERENCES [dbo].[ReportingDates] ([id])
+GO
+
+ALTER TABLE [dbo].[UnemploymentRates] CHECK CONSTRAINT [FK_UnemploymentRates_ReportingDates]
+GO
