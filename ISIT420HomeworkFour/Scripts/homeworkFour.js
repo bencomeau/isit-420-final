@@ -14,37 +14,17 @@
     return response.json();
 }
 
-window.addEventListener('load', () => {
-    // Request employees and stores
-    populateSelect('employeeSelect', 'employees');
-    populateSelect('storeSelect', 'stores');
-});
 
-/**
- * Populates the select options of the given select ID.
- * 
- * @param {string} selectId - The DOM ID of the select to populate with options.
- * @param {string} controllerName - The name of the controller to call.
- */
-const populateSelect = async (selectId, controllerName) => {
-    const { data } = await getData(`api/${controllerName}`);
 
-    if (Array.isArray(data)) {
-        const select = document.getElementById(selectId);
 
-        for (const item of data) {
-            select.options[select.options.length] = new Option(item);
-        }
-    }
-}
 
-document.getElementById('getMarkups').addEventListener('click', async ev => {
+document.getElementById('getURate').addEventListener('click', async ev => {
 
-    const successEl = document.getElementById('markupsMessage');
-    const errorEl = document.getElementById('markupsError');
+    const successEl = document.getElementById('urateMessage');
+    const errorEl = document.getElementById('urateError');
 
     try {
-        const { stores } = await getData(`api/markups`);
+        const { stores } = await getData(`api/urate`);
 
         if (stores) {
             // Clear the previous list items so we don't continue
@@ -52,7 +32,7 @@ document.getElementById('getMarkups').addEventListener('click', async ev => {
             successEl.innerHTML = '';
             stores.forEach(function (store) {
                 const li = document.createElement('li');
-                li.innerHTML = "City: " + store.city + ", Count: " + store.total;
+                li.innerHTML = "Year: " + store.city + ", Month: " + store.total + ", Rate:";
                 successEl.appendChild(li);
             });
             successEl.style.visibility = 'visible';

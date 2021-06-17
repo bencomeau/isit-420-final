@@ -11,6 +11,19 @@ namespace ISIT420HomeworkFour.Controllers
     {
         NodeOrders500Entities myDB = new NodeOrders500Entities();
 
+        [Route("Home/Index/{id?}")]
+        public IHttpActionResult MyIndex(int? id)
+        {
+            return Ok(id);
+        }
+
+        //[HttpGet("/URate/{id}")]
+        //public IHttpActionResult MyRoute(int id)
+        //{
+        //    return Ok(id);
+        //}
+
+
         // GET api/values
         public IEnumerable<string> Get()
         {
