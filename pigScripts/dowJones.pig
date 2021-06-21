@@ -25,7 +25,7 @@ DowC = FOREACH DowB GENERATE SUBSTRING($7, 1, 11) as reporting_date, (
     WHEN $9 < 20 THEN 1
     WHEN $9 > 25 THEN 3
     ELSE 2 END
-    ) as adi, $1 as open_value, $3 as close_value;
+    ) as adi, $1 as open_value, $4 as close_value;
 
 -- Data will be: reporting_date_id, reporting_date, reporting_date, adi_id, open, close
 -- Example: 2,2011-02-01,2011-02-01,3,11892.5,11892.5
